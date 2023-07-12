@@ -9,6 +9,8 @@
     <div>
       <h2>{{ server['name'] }}</h2>
       <span><a href="{{ url_for('edit', id_server=server.id) }}">Editar</a></span>
+      <span><a href="{{ url_for('metrics', id_server=server.id) }}">Log</a></span>
+      <span><a href="{{ url_for('dashboard', id_server=server.id) }}">Dashboard</a></span>
     </div>
     {% endfor %}
   {% else %}

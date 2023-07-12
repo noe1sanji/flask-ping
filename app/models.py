@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.types import DateTime
 
 from app.database import Base
 
@@ -14,7 +15,7 @@ class Server(Base):
         self.host = host
 
     def __repr__(self):
-        return f'<Server {self.name!r} {self.host}>'
+        return f"<Server {self.name!r} {self.host}>"
 
 
 class Log(Base):
@@ -22,3 +23,9 @@ class Log(Base):
     id = Column(Integer, primary_key=True)
     server = Column(String(50))
     response_time = Column(Integer)
+    timestamp = Column(DateTime(timezone=True))
+
+    def __init__(self, server=None, response_time=None, timestamp=None):
+        self.server = server
+        self.response_time = response_time
+        self.timestamp = timestamp
