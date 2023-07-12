@@ -36,3 +36,5 @@ if servers:
             for server in servers
         ]
     ).go()
+else:
+    print("No hay servidores para monitorear.")

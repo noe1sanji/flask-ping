@@ -2,7 +2,9 @@
 
 {% block content %}
 <h1>Dashboard - {{ server.name }}</h1>
+<div id="dashboard" host="{{ server.host }}" id_server="{{ server.id }}"></div>
 <div>
   <canvas id="myChart"></canvas>
 </div>
-{% end block %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

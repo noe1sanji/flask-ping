@@ -1,7 +1,12 @@
 window.addEventListener("load", function () {
   const ctx = document.getElementById("myChart");
+  const dashboard = document.getElementById("dashboard");
+  const server = {
+    "host": dashboard.getAttribute("host"),
+    "id": dashboard.getAttribute("id_server"),
+  };
 
-  fetch("http://127.0.0.1:5000/api/metrics/1")
+  fetch(`http://127.0.0.1:5000/api/metrics/${server.id}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP Error, status = ${response.status}`);
