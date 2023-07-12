@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bienvenido</h1>
+
+<div>
+  {% if servers %}
+    {% for server in servers %}
+    <div>
+      <h2>{{ server['name'] }}</h2>
+      <span><a href="{{ url_for('edit', id_server=server.id) }}">Editar</a></span>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>No hay servidores. Intente añadir un servidor.</p>
+  {% endif %}
+</div>
+{% endblock %}
