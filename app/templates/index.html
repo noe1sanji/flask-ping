@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Bienvenido</h1>
+<div class="container text-center mt-4">
+  <h1>Bienvenido</h1>
+</div>
 
-<div>
+<div class="container text-center mt-5">
   {% if servers %}
+    <div class="row row-cols-auto justify-content-center">
     {% for server in servers %}
-    <div>
-      <h2>{{ server['name'] }}</h2>
-      <span><a href="{{ url_for('edit', id_server=server.id) }}">Editar</a></span>
-      <span><a href="{{ url_for('metrics', id_server=server.id) }}">Log</a></span>
-      <span><a href="{{ url_for('dashboard', id_server=server.id) }}">Dashboard</a></span>
-    </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">{{ server['name'] }}</h2>
+            <span><a href="{{ url_for('edit', id_server=server.id) }}">Editar</a></span>
+            <span><a href="{{ url_for('metrics', id_server=server.id) }}">Log</a></span>
+            <span><a href="{{ url_for('dashboard', id_server=server.id) }}">Dashboard</a></span>
+          </div>
+        </div>
+      </div>
     {% endfor %}
+    </div>
   {% else %}
     <p>No hay servidores. Intente añadir un servidor.</p>
   {% endif %}
