@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
+<div class="container text-center mt-4">
+  <h1>Añadir un nuevo servidor</h1>
+</div>
+<div class="container mt-5 w-50">
   <form method="post">
-    <div>
-      <label for="name">Nombre</label>
-      <input name="name" id="name" required>
+    <div class="mb-3">
+      <label class="form-label" for="name">Nombre</label>
+      <input class="form-control" name="name" id="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="host">Host/IP</label>
+      <input class="form-control" name="host" id="host">
     </div>
     <div>
-      <label for="host">Host/IP</label>
-      <input name="host" id="host">
-    </div>
-    <div>
-      <input type="submit" value="Guardar" required>
+      <input class="btn btn-primary" type="submit" value="Guardar" required>
     </div>
   </form>
 </div>

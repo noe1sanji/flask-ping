@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Dashboard - {{ server.name }}</h1>
+<div class="container text-center mt-4">
+  <h1>Dashboard - {{ server.name }}</h1>
+</div>
 <div id="dashboard" host="{{ server.host }}" id_server="{{ server.id }}"></div>
-<div>
+<div class="container mt-5">
   <canvas id="myChart"></canvas>
 </div>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
