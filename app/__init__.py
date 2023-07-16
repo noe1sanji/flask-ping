@@ -1,15 +1,22 @@
 from datetime import datetime
 
+import click
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask.json import jsonify
 from flask_cors import CORS
 
-from app.database import db_session
+from app.database import db_session, init_db
 from app.models import Log, Server
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "mikey"
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
+@app.cli.command("init-db")
+@click.command()
+def init():
+    init_db()
 
 
 @app.teardown_appcontext

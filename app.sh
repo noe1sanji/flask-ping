@@ -1,6 +1,10 @@
 #!/bin/bash
 
-export FLASK_APP=app
-export FLASK_DEBUG=true
 
+if [ ! -f "app/database.db" ]; then
+  flask init-db
+fi
+
+
+export FLASK_DEBUG=true
 flask run --debugger

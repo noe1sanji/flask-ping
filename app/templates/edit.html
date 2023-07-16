@@ -8,11 +8,11 @@
   <form method="post" action="{{ url_for('edit', id_server=server.id) }}">
     <div class="mb-3">
       <label class="form-label" for="name">Nombre</label>
-      <input class="form-control" name="name" value="{{ server['name'] }}">
+      <input class="form-control" name="name" value="{{ server['name'] }}" required>
     </div>
     <div class="mb-3">
       <label class="form-label" for="host">Host/IP</label>
-      <input class="form-control" name="host" value="{{ server['host'] }}">
+      <input class="form-control" name="host" value="{{ server['host'] }}" required>
     </div>
     <div class="mb-3">
       <input class="btn btn-primary" type="submit" value="Guardar">
