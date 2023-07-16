@@ -96,7 +96,7 @@ def metrics(id_server):
         {
             "server": server.server,
             "response_time": server.response_time,
-            "timestamp": server.timestamp,
+            "timestamp": server.timestamp.strftime("%Y-%m-%d %H:%M"),
         }
         for server in results
     ]

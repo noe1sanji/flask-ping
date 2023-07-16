@@ -25,6 +25,7 @@ window.addEventListener("load", function () {
         data: {
           datasets: [{
             data: metrics,
+            fill: "start",
           }],
         },
         options: {

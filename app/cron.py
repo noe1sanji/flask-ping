@@ -6,8 +6,12 @@ from crontabs import Cron, Tab
 from ping import send_ping
 
 
-def send_metric(host):
-    response = send_ping(host)
+def get_servers():
+    result = requests.get("http://127.0.0.1:5000/api/servers").json()
+    return result
+
+
+def send_metrics(host, response):
     data = {
         "host": host,
         "response": response,
@@ -26,15 +30,15 @@ def send_metric(host):
         print(f"{host} - No se enviaron los datos.")
 
 
-servers = requests.get("http://127.0.0.1:5000/api/servers").json()
-# print(servers.json())
+def monitor():
+    servers = get_servers()
 
-if servers:
-    Cron().schedule(
-        *[
-            Tab(name=server["name"]).every(seconds=15).run(send_metric, server["host"])
-            for server in servers
-        ]
-    ).go()
-else:
-    print("No hay servidores para monitorear.")
+    if servers:
+        for server in servers:
+            response = send_ping(server["host"])
+            send_metrics(server["host"], response)
+    else:
+        print("No hay servidores para monitorear.")
+
+
+Cron().schedule(Tab(name="monitor").every(seconds=60).run(monitor)).go()

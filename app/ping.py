@@ -2,7 +2,7 @@ import subprocess as sp
 
 
 def send_ping(host):
-    command = f"ping {host} -c1"
+    command = f"ping {host} -c2 -W 1000"
 
     try:
         status, output = sp.getstatusoutput(command)
