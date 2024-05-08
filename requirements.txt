@@ -5,7 +5,7 @@ click==8.1.4
 crontabs==0.2.2
 daiquiri==3.2.1
 Flask==2.3.2
-Flask-Cors==4.0.0
+Flask-Cors==4.0.1
 Flask-SQLAlchemy==3.0.5
 fleming==0.7.0
 greenlet==2.0.2
